@@ -18,7 +18,7 @@
 
 int i = 0;
 int kierunek1 = 0, kierunek2 = 0, kierunek3 = 0;
-
+int flaga = 0;
 String a; //zmienna wiadomosci
 int krok1 = 0, krok2 = 0, krok3 = 0;
 
@@ -94,6 +94,7 @@ void loop() {
   {
     a = Serial.readStringUntil('\n');
     sscanf(a.c_str(), "a %d b %d c %d", &krok1, &krok2, &krok3);
+    flaga = 1;
     if( krok1 < 0){
       krok1 = -krok1;
       kierunek1 = 1;
@@ -120,11 +121,12 @@ void loop() {
     else{
       kierunek3 = 0;
       digitalWrite(Z_DIR_PIN, kierunek3);
+     
     }
-
+    
     
     //wyswietlenie/sprawdzenie krokow
-    Serial.println(krok1);
+    //Serial.println(krok1);
   }
   //fprintf sprintf printf*******
   //obsluga krokow sil1,2,3
@@ -148,6 +150,14 @@ void loop() {
   digitalWrite(Z_STEP_PIN, LOW);
   delay(1);
 
+
+ 
+  if ( krok1 == 0 && krok2 == 0 && krok3 == 0 && flaga == 1)
+  {
+    Serial.println("Idle");
+    flaga = 0;
+  }
+ 
 }
 
 
