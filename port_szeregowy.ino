@@ -27,7 +27,7 @@ void setup() {
   // put your setup code here, to run once:
   Serial.begin(57600);
 
-  //silniki
+  //inicjalizacja silnikow
   pinMode(X_STEP_PIN, OUTPUT);
   pinMode(X_DIR_PIN, OUTPUT);
   pinMode(X_ENABLE_PIN, OUTPUT);
@@ -49,7 +49,7 @@ void setup() {
   digitalWrite(Z_ENABLE_PIN, LOW);
   digitalWrite(Z_DIR_PIN, LOW);
 
-  //krancowki
+  //inicjalizacja krancowek
   pinMode(X_MAX_PIN, INPUT_PULLUP);
   pinMode(Y_MAX_PIN, INPUT_PULLUP);
   pinMode(Z_MAX_PIN, INPUT_PULLUP);
@@ -89,12 +89,17 @@ void loop() {
   */
   
   
-
+  //oczekiwanie na wpisanie komendy na port szeregowy
   while (Serial.available() > 0)
   {
+    //odczyt komendy 
     a = Serial.readStringUntil('\n');
+    
+    //odczyt danych z komendy
     sscanf(a.c_str(), "a %d b %d c %d", &krok1, &krok2, &krok3);
     flaga = 1;
+    
+    //zmiana kierunku jesli wartosc jest negatywna
     if( krok1 < 0){
       krok1 = -krok1;
       kierunek1 = 1;
@@ -129,7 +134,7 @@ void loop() {
     //Serial.println(krok1);
   }
   //fprintf sprintf printf*******
-  //obsluga krokow sil1,2,3
+  //obsluga krokow sil 1,2,3 przy sprawdzaniu stanu krancowek
   if (((digitalRead(X_MAX_PIN) == 0 && kierunek1 == 0) || kierunek1 == 1) && krok1 > 0){
     digitalWrite(X_STEP_PIN, HIGH);
     krok1--;
