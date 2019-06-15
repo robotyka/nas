@@ -1,9 +1,3 @@
-
-Akcje wiadomości   Odpowiedz nadawcy Odpowiedz wszystkim Prześlij dalej   Otwórz w nowym oknie
-Temat: fffff
-Zdjęcie kontaktu
-Od	Znaleziono podpis, jednak bez autoryzacji. Możliwe, że problem z konfiguracją serwera? Zuzanna Matkowska	Data	Dzisiaj 15:43
-Treść wiadomości
 #define X_STEP_PIN         54
 #define X_DIR_PIN          55
 #define X_ENABLE_PIN       38
