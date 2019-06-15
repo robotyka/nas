@@ -1,3 +1,5 @@
+%tablica wartosci z karty katalogowej
+
 temptable = [...
      1, 713;
     17, 300; 
@@ -32,11 +34,15 @@ temptable = [...
   1000,  10;
   1010,   0];
 
+
+% wykreślenie krzywej
 plot(temptable(:,1),temptable(:,2))
 grid on
 xlabel('bity')
 ylabel('temperatura')
 
+
+% wyznaczenie 4 punktow, potrzebnych do wyliczenia a,b,c,d
 x1 = temptable(12,1);
 y1 = temptable(12,2);
 
@@ -63,6 +69,7 @@ Y = [ y1;
 
 Z = inv(X)*Y;
 
+% wykreslenie krzywej o znanych a,b,c,d
 hold on 
 for x = 0:10:1000
    y = Z(1)*x^3 + Z(2)*x^2 + Z(3)*x^1 +Z(4);
