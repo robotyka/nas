@@ -1,3 +1,5 @@
+% Mateusz Redmerski; Zuzanna Matkowska; Miłosz Martyna; 2019
+
 %{
 % setup(TYLKO RAZ)
 drukarka = serial('/dev/ttyUSB0')
