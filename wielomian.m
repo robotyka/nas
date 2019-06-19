@@ -1,4 +1,6 @@
-%tablica wartosci z karty katalogowej
+% Mateusz Redmerski; Zuzanna Matkowska; Miłosz Martyna; 2019
+
+% tablica wartosci z karty katalogowej
 
 temptable = [...
      1, 713;
